@@ -160,9 +160,31 @@ pre span {
         <div id="content"> 
           <p>In this blog, I will share with you Facebook tagged Leetcode questions and their solutions.</p>
 
-          <p class="text-center text-muted"><a href="" target="_blank"></a></p>
+          <p class="text-center text-muted"><a href="https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/" target="_blank">https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/</a></p>
 <pre>
-
+class Solution:
+  def minRemoveToMakeValid(self, s: str) -> str:
+      pos = []
+      stack = []
+      ans = ""
+        
+      for i in range(len(s)):
+          if s[i] == "(":
+              stack.append(i)
+          elif s[i] == ")":
+              if len(stack) == 0:
+                  pos.append(i)
+              else:
+                  stack.pop()
+            
+      while len(stack) > 0:
+          pos.append(stack.pop())
+            
+      for i in range(len(s)):
+          if i not in pos:
+              ans += s[i]
+                
+      return ans 
 </pre>
 
 
