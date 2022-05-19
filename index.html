@@ -233,7 +233,21 @@ class Solution:
       return a
 </pre>
 
-
+<p class="text-center text-muted"><a href="https://leetcode.com/problems/buildings-with-an-ocean-view/" target="_blank">https://leetcode.com/problems/buildings-with-an-ocean-view/</a></p>
+<pre> 
+class Solution:
+  def findBuildings(self, heights: List[int]) -> List[int]:
+      ans = []
+      k = len(heights)        
+      max = 0
+      
+      for i in range(k - 1, -1, -1):
+          if heights[i] > max:
+              ans.append(i)
+              max = heights[i]
+              
+      return ans[::-1]
+</pre>
 
 
 
