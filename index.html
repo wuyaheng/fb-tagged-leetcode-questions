@@ -296,6 +296,41 @@ class Solution:
       return l
 </pre>
 
+<p class="text-center text-muted"><a href="https://leetcode.com/problems/basic-calculator-ii/" target="_blank">https://leetcode.com/problems/basic-calculator-ii/</a></p>
+<pre> 
+class Solution:
+  def calculate(self, s: str) -> int:
+      num = 0
+      pre_op = '+'
+      stack = []
+      s+='+'
+      
+      for c in s:          
+          if c.isdigit():
+              num = num * 10 + int(c)
+              
+          elif c == ' ':
+              continue
+              
+          else:     
+              if pre_op == '+':
+                  stack.append(num)
+                  
+              elif pre_op == '-':
+                  stack.append(-num)
+                  
+              elif pre_op == '*':
+                  stack.append(stack.pop() * num)
+                  
+              elif pre_op == '/':
+                  stack.append(math.trunc(stack.pop() / num))
+
+              pre_op = c
+              num = 0
+          
+      return sum(stack)
+</pre>
+
 </div>
       </div>
     </div>
